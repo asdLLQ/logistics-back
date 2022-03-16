@@ -24,6 +24,11 @@ public interface IGoodsBillDao extends JpaRepository<GoodsBill, Long> {
 	@Query(value = "update goodsbill set factDealDate = ?1 where goodsBillCode = ?2")
 	public void updateFactDealDate(Date factDealDate, String goodsBillCode);
 	
+	@Modifying
+	@Query(value = "insert into GoodsBill values ?1")
+	public void save(GoodsBill goodsbill);
+	
+	
 	@Query(value = "select b.* from goodsbill b inner join goodsbillevent e on b.goods_bill_code = e.goods_bill_id where b.receive_goods_customer_code = ?1 and e.event_name = '未结' and b.goods_bill_code not in (select goods_bill_code from customerreceiptinfo)", nativeQuery = true)
 	public List<GoodsBill> findWaitReceived(String customerCode);
 	
