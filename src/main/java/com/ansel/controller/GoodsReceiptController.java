@@ -25,7 +25,7 @@ public class GoodsReceiptController extends ReturnType {
 	
 	@ApiOperation(value = "新增一条司机回执信息", notes = "新增一条司机回执信息")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(GoodsReceiptInfo goodsReceiptInfo) {
+	public String addGoodsReceipt(GoodsReceiptInfo goodsReceiptInfo) {
 		boolean flag = false;
 		
 		flag = goodsReceiptService.add(goodsReceiptInfo);
